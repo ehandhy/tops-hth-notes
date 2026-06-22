@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 · 稳定入口与页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4fbfb;
+      color: #1a2e2e;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    .wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 6rem 0 4rem;
+      text-align: center;
+      background: linear-gradient(145deg, #e0f2f0 0%, #c6e6e2 100%);
+      border-radius: 0 0 3rem 3rem;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,168,150,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0c3d3a;
+      position: relative;
+    }
+
+    .hero h1 span {
+      color: #008578;
+      background: rgba(0, 168, 150, 0.12);
+      padding: 0 0.3rem;
+      border-radius: 8px;
+    }
+
+    .hero .sub {
+      margin-top: 1.2rem;
+      font-size: 1.15rem;
+      color: #2f5b58;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      display: inline-block;
+    }
+
+    /* Grid卡片通用 */
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 10px 25px -8px rgba(0, 80, 70, 0.08);
+      border: 1px solid rgba(0, 168, 150, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 30px -10px rgba(0, 120, 100, 0.12);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0d4b46;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 .ico {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #00a896;
+      border-radius: 20px;
+      margin-right: 4px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #34635f;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: #0b4d47;
+      margin: 3rem 0 1.5rem;
+      border-left: 6px solid #00a896;
+      padding-left: 1.2rem;
+    }
+
+    .bluegreen-accent {
+      color: #00897b;
+      font-weight: 500;
+    }
+
+    /* Faq摘要 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .faq-item {
+      background: #edf7f5;
+      border-radius: 20px;
+      padding: 1.3rem 1.5rem;
+      border-left: 4px solid #40bfb0;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #0b4d47;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #39615d;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      background: #e3f2ef;
+      border-radius: 40px 40px 0 0;
+      padding: 3rem 1.5rem;
+      margin-top: 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links .inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.2rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #0b5e55;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #00a896;
+    }
+
+    .footer-links .main-link {
+      background: #0c5b53;
+      color: white;
+      padding: 0.5rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .footer-links .main-link:hover {
+      background: #0a4a43;
+      border-bottom: none;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #507b76;
+      margin-top: 0.5rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .hero h1 { font-size: 2rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .footer-links { flex-direction: column; gap: 1.2rem; text-align: center; }
+      .footer-links .inner { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 4rem 0 3rem; }
+      .hero .sub { font-size: 0.95rem; padding: 0.5rem 1.2rem; }
+      .card { padding: 1.5rem 1.2rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+
+    /* 点缀 */
+    .dot-accent {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #00a896;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>从稳定入口理解 <span>MK体育</span></h1>
+      <div class="sub">页面即说明 · 一个清晰、克制的介绍页</div>
+    </section>
+
+    <!-- 优势区 网格卡片 -->
+    <section>
+      <div class="grid-3">
+        <div class="card">
+          <h3><span class="ico"></span> 稳定的访问路径</h3>
+          <p>入口地址长期维护，减少频繁变动的困扰。通过 <a href="https://portal-mkty.com" style="color:#00897b; font-weight:500; text-decoration:underline; text-underline-offset:3px;">MK体育</a> 直达，每次访问都对应一致的说明页面。</p>
+        </div>
+        <div class="card">
+          <h3><span class="ico"></span> 克制的信息结构</h3>
+          <p>不堆叠夸张承诺，以知识型段落阐明平台定位。每一板块均有承接，便于快速理解核心功能。</p>
+        </div>
+        <div class="card">
+          <h3><span class="ico"></span> 蓝绿色视觉体系</h3>
+          <p>采用蓝绿点缀色，配合网格卡片与柔和阴影，在移动端与桌面端均保持一致的阅读节奏。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区 更详细 -->
+    <section>
+      <h2 class="section-title">页面说明 · 从入口到内容</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><span class="ico"></span> 入口即起点</h3>
+          <p>很多人第一次接触 <a href="https://portal-mkty.com" style="color:#00897b; font-weight:500; text-decoration:underline; text-underline-offset:3px;">MK体育</a> 时，最关心的是访问是否顺畅、页面是否清晰。本页正是为此设计：入口地址、说明内容、常见疑问都集中在一处。你不需要在多个页面之间跳转，就能对平台形成基本认知。</p>
+        </div>
+        <div class="card">
+          <h3><span class="ico"></span> 功能场景示意</h3>
+          <p>无论是通过电脑浏览器还是手机浏览器打开，卡片式布局都会自动适配。从 hero 区的引导，到优势区的拆解，再到 FAQ 摘要，内容按照“先整体印象、再分块细节”的顺序展开，符合知识型读者的阅读习惯。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 额外说明 + 强调稳定 -->
+    <div style="background: #e9f6f3; border-radius: 2rem; padding: 2rem; margin: 2.5rem 0;">
+      <p style="font-size: 1.05rem; color: #1d5350; display: flex; align-items: center; gap: 0.5rem;">
+        <span style="display: inline-block; width: 12px; height: 12px; background: #00a896; border-radius: 4px;"></span>
+        本介绍页聚焦于「稳定入口」和「页面说明」两个维度。如果你正在寻找关于 MK体育 的直接介绍，这里提供了必要的上下文，同时避免过度承诺或诱导性措辞。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <h2 class="section-title">FAQ 摘要</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <strong>Q: 如何理解“稳定入口”？</strong>
+          <p>入口地址 <a href="https://portal-mkty.com" style="color:#00897b; font-weight:500;">MK体育</a> 长期指向同一个说明页面，减少因链接变动造成的混淆。页面本身承担介绍职能，适合初次了解的用户。</p>
+        </div>
+        <div class="faq-item">
+          <strong>Q: 页面内容会频繁变化吗？</strong>
+          <p>本页设计为相对稳定的介绍页，主要内容结构会保持，但细节措辞和版式可能随着需求优化。建议以官网实际展示为准。</p>
+        </div>
+        <div class="faq-item">
+          <strong>Q: 移动端体验如何？</strong>
+          <p>完全响应式。网格卡片在窄屏下自动变为单列，触摸区域增大，字体和间距保持可读性。蓝绿色点缀在手机屏幕上同样清晰。</p>
+        </div>
+        <div class="faq-item">
+          <strong>Q: 为什么强调“知识型”语气？</strong>
+          <p>本页不采用营销话术，而是以陈述和解释为主，帮助用户快速建立认知框架。这也符合页面说明的定位。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+      <div class="inner">
+        <span style="color:#1d5e57; font-weight: 500;">MK体育  ·  页面索引</span>
+        <a href="#">关于说明</a>
+        <a href="#">使用参考</a>
+        <a href="#">结构概述</a>
+        <a href="https://portal-mkty.com" class="main-link">MK体育</a>
+      </div>
+      <div class="footer-note">
+        <span class="dot-accent"></span> 本页为介绍性落地页 · 内容真实克制 · 持续维护
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
